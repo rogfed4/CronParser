@@ -3,14 +3,7 @@
 This is a command line application which parses a cron string and expands each field to show the times at which it will run.
 Only five time fields (minute, hour, day of month, month, and day of week) plus a command are considered in this application.
 
-The cron expression consists of five fields:
-
-Minute: The minute field represents the minutes within an hour (0 to 59).
-Hour: The hour field represents the hour of the day (0 to 23).
-Day of the Month: The day of the month field represents the day of the month (1 to 31).
-Month: The month field represents the month of the year (1 to 12).
-Day of the Week: The day of the week field represents the day of the week (1 to 7, where both 1 and 7 represent Monday andSunday).
-
+The cron expression consists of five time fields:
 
 *1. Minute Field:*
 
@@ -73,11 +66,11 @@ In addition to the numerical values, you can use some special characters in a cr
 
 *Examples:*
 
-1. `*/15 * * * *` - Execute every 15 minutes.
-2. `0 2 * * *` - Execute at 2 AM daily.
-3. `30 12 1-15 * *` - Execute at 12:30 PM from the 1st to the 15th day of the month.
-4. `0 0 1 */3 *` - Execute at midnight on the 1st day of every 3rd month.
-5. `0 8,18 * * 1-5` - Execute at 8 AM and 6 PM from Monday to Friday.
+1. `*/15 * * * * command` - Execute every 15 minutes.
+2. `0 2 * * * command` - Execute at 2 AM daily.
+3. `30 12 1-15 * * command` - Execute at 12:30 PM from the 1st to the 15th day of the month.
+4. `0 0 1 */3 * command` - Execute at midnight on the 1st day of every 3rd month.
+5. `0 8,18 * * 1-5 command` - Execute at 8 AM and 6 PM from Monday to Friday.
 
 ## Setup
 To run this project: 
