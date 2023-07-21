@@ -177,6 +177,7 @@ bool validateDayOfWeek(string& day, string& err)
 //validate function to call respective validation function based on type
 bool validate(string& value, int type, string& err) {
     //switch case on type for month, hour, minute, day of week, day of month
+    
     switch(type) {
         case MONTH: {
             if(!validateMonth(value, err)) {

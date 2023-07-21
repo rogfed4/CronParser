@@ -15,6 +15,10 @@ std::vector<int> parseRange(std::string& range, int type, std::string& err)
         int start, end;
         std::string rangeStartStr = range.substr(0, range.find('-'));
         std::string rangeEndStr = range.substr(range.find('-') + 1);
+        if(rangeStartStr=="" || rangeEndStr==""){
+            err="Invalid Input: " + range + " " + getConstantString(type) + " Not a valid range";
+            return {};
+        } 
         if (!validate(rangeStartStr, type, err) || !validate(rangeEndStr, type, err)) {
             return {};  // Return empty vector if range values are invalid
         }
@@ -23,18 +27,10 @@ std::vector<int> parseRange(std::string& range, int type, std::string& err)
         end = std::stoi(rangeEndStr);
 
 
-        if (start >= end)
+        if (start >end)
         {
-            // Range wraps around the valid range, handle the case where the start is greater or equal to the end
-            for (int i = start; i <= end + upper_bound - lower_bound + 1; ++i)
-            {
-                if (i % (upper_bound - lower_bound + 1) == 0 && lower_bound == 1) {
-                    resultValues.push_back(upper_bound - lower_bound + 1);
-                }
-                else {
-                    resultValues.push_back(i % (upper_bound - lower_bound + 1));
-                }
-            }
+            err="Invalid Input: " + range + " " + getConstantString(type) + " Not a valid range";
+            return{};    
         }
         else
         {
@@ -57,7 +53,6 @@ std::vector<int> parseRange(std::string& range, int type, std::string& err)
         }
         else
         {
-            
             if (!validate(range, type, err)) {
                 return {};  // Return empty vector if single value is invalid
             }
@@ -168,7 +163,7 @@ string Parser::parse_input(std::string input)
         if(err.length()!=0)
             return err;
         outputMap[i] = parsedOutput;
-        outputValues.push_back(getConstantString(i)+ parsedOutput);
+        outputValues.push_back(getOutputString(i)+ parsedOutput);
         i++;
     }
     while(i<sz){
@@ -176,7 +171,7 @@ string Parser::parse_input(std::string input)
         i++;
     }
     outputMap[i] = command;
-    outputValues.push_back(getConstantString(i-1) + command);
+    outputValues.push_back(getOutputString(i-1) + command);
     string ans = generateOutputString(outputValues);
     return ans;
     

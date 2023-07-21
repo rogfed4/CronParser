@@ -15,8 +15,8 @@ const int COMMNAD = 5;
 
 const std::vector<int> daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-// utility function to return a string for the above int constants
-string getConstantString(int constant)
+// utility function to return a outputstring for the above int constants
+string getOutputString(int constant)
 {
     switch (constant)
     {
@@ -37,3 +37,26 @@ string getConstantString(int constant)
     }
 }
 
+
+
+// utility function to return a string for the above int constants
+string getConstantString(int constant)
+{
+    switch (constant)
+    {
+        case MINUTE:
+            return "minute";
+        case HOUR:
+            return "hour";
+        case MONTH:
+            return "month";
+        case DAY_OF_MONTH:
+            return "day of month";
+        case DAY_OF_WEEK:
+            return "day of week";
+        case COMMNAD:
+            return "command";
+        default:
+            return "";
+    }
+}
